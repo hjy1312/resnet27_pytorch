@@ -63,7 +63,7 @@ class Resnet27(nn.Module):
     def forward(self,input):
         x = self.conv1(input)
         x = self.downsample_ResidualBlock(x)
-        x = x.view(x.size(0),-1)
+        x = x.squeeze()
         x = self.classifier1(x)        
         self.features = x
         x = self.classifier(x)
